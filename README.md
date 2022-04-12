@@ -1,4 +1,4 @@
-# Thorne And Ruiz 2022 EDA Project
+# 2022 EDA Project
 
 Gabriella Ruiz, Chani Thorne
 Biosciences Department, Minnesota State University Moorhead, 1104 7th Avenue South, Moorhead, MN  56563
