@@ -1,20 +1,17 @@
-
 library(tidyverse)
 library(googlesheets4)
 
-NP_Species_18 <- read_sheet("https://docs.google.com/spreadsheets/d/1bBaDxI7PnZIbDDT4N_kmLap8wHPJO6cyj4Qaxv3xwvI/edit#gid=0")
-NP_Species_18
+NP_Species_20 <- read_sheet("https://docs.google.com/spreadsheets/d/1rVNHuyM9z6qAGKWknkn8j7zuJhFyHJeZnLgxxVdpM-4/edit#gid=0")
+NP_Species_20
 
-houston_url <-"https://docs.google.com/spreadsheets/d/1dE-9shHj4D0H8DHCF25JeJpycBEBOA5x38j4uQILnJs/edit#gid=0"
 
-Houston_Species_18 <- 
-read_sheet(houston_url, sheet = "data")
+Houston_Species_20 <- read_sheet("https://docs.google.com/spreadsheets/d/1E4_RjXlmtJN9BJ0-z-cDE3Mzdpym_Bl0bLrklUKAsu8/edit#gid=0")
 
 
 data <-
   bind_rows(
-    NP_Species_18, 
-    Houston_Species_18
+    NP_Species_20, 
+    Houston_Species_20
   ) %>% 
   mutate(
     plot = factor(plot)
@@ -54,7 +51,7 @@ data %>%
   ggplot() +
   geom_col (size = 3) + (mapping = aes(x = plot, y = n_spp, fill = treatment)) +
   facet_wrap(~ site)
-ggsave("SAC.png",
+ggsave("SAC 2020.png",
        height = 8,
        width = 12,
        units = "in",
