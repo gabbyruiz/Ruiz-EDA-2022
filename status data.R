@@ -3,6 +3,7 @@ library(readr)
 library(tidyverse)
 library(googlesheets4)
 
+#read in data
 np_url <- "https://docs.google.com/spreadsheets/d/1hfK3ptAkMU4AiM5PknHe4IebFl29wEWNdMKpc5nEC4M/edit#gid=0"
 np_data <-
   read_sheet(np_url) %>% 
@@ -16,7 +17,7 @@ houston_data <-
   left_join(read_sheet(houston_url, sheet = 2)) %>% 
   print()
 
-
+#manipulate rows
 data <-
   bind_rows(
     np_data, 
@@ -45,10 +46,7 @@ filter(
 ) %>% 
   arrange(status)
 
-
-ggplot(data = data) +
-  geom_jitter(mapping = aes(x = plot, y = status, color = status), alpha = 1)
-
+#bar chart that is not proportionate
 data %>% 
   count(site, plot, status, name = "n_spp") %>% 
   ggplot() +
@@ -61,6 +59,7 @@ data %>%
 #   geom_bar(mapping = aes(x = status, fill = status)) +
 #   facet_wrap(~ site)
 
+#proportionate bar chart
 data %>% 
   count(site, plot, status, name = "n_spp") %>% 
   group_by(site) %>% 
@@ -69,9 +68,17 @@ data %>%
   summarise(sum_p = sum(p)) %>% 
   ggplot() +
   geom_col(mapping = aes(x = site, y = sum_p, fill = status),
-           position = "stack") 
+           position = "stack")
+
+#Save bar chart
+ggsave("bar chart.png",
+       height = 8,
+       width = 12,
+       units = "in",
+       dpi = 400)
  
 
+#chi-squared test
 data %>% 
   count(site, status) %>% 
   pivot_wider(names_from = "status", values_from = "n") %>% 
