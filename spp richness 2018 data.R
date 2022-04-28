@@ -40,13 +40,9 @@ data_presence_site <-
 filter(
   data_presence_site,
   !Houston,
-  !MSUM_NP
+  !NP
 ) %>% 
   arrange(taxa)
-
-np_species_div <- data(taxa, plot)
-np_species_div
-
 
 #FOR POSTER
 data %>% 

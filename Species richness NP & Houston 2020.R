@@ -41,10 +41,6 @@ filter(
 ) %>% 
   arrange(taxa)
 
-np_species_div <- data(taxa, plot)
-np_species_div
-
-
 #FOR POSTER
 data %>% 
   count(site, plot, treatment, name = "n_spp") %>% 
