@@ -26,6 +26,22 @@ applied. A greater understanding of these processes and consequent
 environmental impacts may provide a useful background of knowledge for
 land management, restoration, and conservational efforts.
 
+### **Introduction**
+
+MSUM has a total of 60 established plots at the Regional Science Center
+(RSC). 30 of these plots are a part of The Nutrient Network (NutNet), a
+global research collaborative started by the University of Minnesota (U
+of M) with the intent to study the effects of nutrient deposition in
+grasslands. This site is North Pond (NP), and receives NPK fertilizer
+applications. The other 30 plots, called Houston, do not receive any
+fertilizer applications and acts as a control site for student research
+projects.
+
+We have collected taxa, biomass, percent cover, and light measurements
+from these plots. We will be using the taxa data to analyze species
+richness at both sites. This analysis does not include factors that
+determine species dominance in each plot.
+
 ### **Methods**
 
 According to NutNet protocols (Nutrient Network 2016), each NutNet site
@@ -53,11 +69,11 @@ Data analysis was completed using R Studio software. 
 
 ![](SACposter_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
-###### Fig. 2 Comparison of plant species richness between untreated plots, Houston (left) and NPK treated plots, North Pond (right). 2021
+###### Fig. 2 Comparison of plant species richness between untreated plots, Houston (left) and NPK treated plots, North Pond (right). 2020
 
 ![](SACposter_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-###### Fig. 3 Comparison of plant species richness between untreated plots, Houston (left) and NPK treated plots, North Pond (right). 2020 data
+###### Fig. 3 Comparison of plant species richness between untreated plots, Houston (left) and NPK treated plots, North Pond (right). 2018 data
 
 Figures 1-3 depict the species richness distribution between plots at
 North Pond and Houston. These graphs show a couple of visual trends over
@@ -97,21 +113,22 @@ plot is dominated by individual native species (say 80%).
 Nutrient deposition and runoff often contaminate the surrounding area of
 application. A study completed on the effects of urbanization on species
 richness showed that under circumstances of urbanization, species
-richness almost always decreases (McKinney 2008). This, paired with our
-results that have shown a higher average species richness in control
-plots as compared to plots with NPK additives, could implicate that as
-urban growth and sprawl increase, we will see a decrease of native
-species richness as more land is maintained with chemical control
-including fertilizers, herbicides, and pesticides. There is also
-evidence that suggests that the use of NPK fertilizers could increase
-the amount of exotic species richness, thus decreasisng the number of
-native species richness in prairie landscapes (Seableem 2013).
+richness almost always decreases (McKinney 2008). There is also evidence
+that suggests that the use of NPK fertilizers could increase the amount
+of exotic species richness, thus decreasing the number of native species
+richness in prairie landscapes (Seabloom 2013). Our results did not show
+significance in native and nonnative species between both sites, but
+North Pond control plots do have higher species richness than plots with
+fertilizer. This may be due to the natural variability between sites,
+because Houston is warmer and drier than North Pond. 
 
-This result is often misinterpreted, as fertilizers have a tendency to
-increase biomass. This creates the illusion that there is a healthy
-environment because there is more plant matter, but an analysis of
-species richness will often times reveal that, as we have seen in our
-work at the MSUM RSC, chemicals decrease species richness. 
+This result could be misinterpreted, as this analysis did not include
+biomass and percent cover data. To get a better understanding of the
+current status of the two sites and how fertilizers impact native
+prairies, I would recommend further analyses that include and breakdown
+biomass and percent cover.
+
+ 
 
 ###### ![](images/biomass.jpg)
 

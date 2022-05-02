@@ -61,6 +61,14 @@ Department, Minnesota State University Moorhead, 1104 7th Avenue South, Moorhead
 
 The Minnesota State University of Moorhead Regional Science Center has two established restored prairie sites: North Pond and Houston. Students at MSUM have collected 5 years of percent cover data from North Pond and 3 years from Houston. We will be using these data sets to ask "How does species richness vary in native restored prairies when NPK fertilizer treatments are applied?" We will be using exploratory data analysis to pursue this question by comparing percent cover and taxa data from both sites to look at the variation of species richness. Previous studies on native and restored prairies have shown that anthropogenic influences on the environment fuel the growth of invasive species (MacDougall et al. 2014). We expect to find that plots with applied NPK fertilizer will have a lower overall species richness than plots with no nutrients applied. A greater understanding of these processes and consequent environmental impacts may provide a useful background of knowledge for land management, restoration, and conservational efforts.
 
+### **Introduction**
+
+MSUM has a total of 60 established plots at the Regional Science Center (RSC). 30 of these plots are a part of The Nutrient Network (NutNet), a global research collaborative started by the University of Minnesota (U of M) with the intent to study the effects of nutrient deposition in grasslands. This site is North Pond (NP), and receives NPK fertilizer applications. The other 30 plots, called Houston, do not receive any fertilizer applications and acts as a control site for student research projects.
+
+We have collected taxa, biomass, percent cover, and light measurements from these plots. We will be using the taxa data to analyze species richness at both sites. This analysis does not include factors that determine species dominance in each plot.
+
+  
+
 ### **Methods**
 
 According to NutNet protocols (Nutrient Network 2016), each NutNet site is split into three blocks, each with 10 5x5 m plots for a total of 30 plots. Factorial combinations of nutrients (Nitrogen, Phosphorus, and Potassium - NPK) were added for the fifth year to designated 5x5 m plots in the spring. The Houston site follows the same protocols for 5x5 m plot design as well, but does not receive the fertilizer treatment. We measured species diversity and species abundance using NutNet protocols for both sites (Nutrient Network 2016):
@@ -72,38 +80,6 @@ Data analysis was completed using R Studio software. 
 ![](images/percent%20cover.jpg)
 
 ### **Results**
-
-```{r}
-
-data <-
-  bind_rows(
-    NP_Species_18, 
-    Houston_Species_18
-  ) %>% 
-  mutate(
-    plot = factor(plot)
-  )
-
-data_presence_site <- 
-  data %>% 
-  distinct(site, taxa) %>% 
-  mutate(present = TRUE) %>% 
-  pivot_wider(
-    names_from = "site", 
-    values_from = "present", 
-    values_fill = FALSE
-  )  
-
-#FOR POSTER
-data %>% 
-  count(site, plot, treatment, name = "n_spp") %>% 
-  ggplot() +
-  geom_col (size = 3) + (mapping = aes(x = plot, y = n_spp, fill = treatment)) +
-  facet_wrap(~ site)
-
-```
-
-###### Fig. 1 Proportions of native versus nonnative species richness at North Pond and Houston in 2021.
 
 ```{r}
 
@@ -131,9 +107,10 @@ data %>%
   ggplot() +
   geom_col(mapping = aes(x = plot, y = n_spp, fill = treatment)) +
   facet_wrap(~ site)
+
 ```
 
-###### Fig. 2 Comparison of plant species richness between untreated plots, Houston (left) and NPK treated plots, North Pond (right). 2021
+###### Fig. 1 Proportions of native versus nonnative species richness at North Pond and Houston in 2021.
 
 ```{r}
 
@@ -164,7 +141,38 @@ data %>%
   facet_wrap(~ site)
 ```
 
-###### Fig. 3 Comparison of plant species richness between untreated plots, Houston (left) and NPK treated plots, North Pond (right). 2020 data
+###### Fig. 2 Comparison of plant species richness between untreated plots, Houston (left) and NPK treated plots, North Pond (right). 2020
+
+```{r}
+
+data <-
+  bind_rows(
+    NP_Species_18, 
+    Houston_Species_18
+  ) %>% 
+  mutate(
+    plot = factor(plot)
+  )
+
+data_presence_site <- 
+  data %>% 
+  distinct(site, taxa) %>% 
+  mutate(present = TRUE) %>% 
+  pivot_wider(
+    names_from = "site", 
+    values_from = "present", 
+    values_fill = FALSE
+  )  
+
+#FOR POSTER
+data %>% 
+  count(site, plot, treatment, name = "n_spp") %>% 
+  ggplot() +
+  geom_col (size = 3) + (mapping = aes(x = plot, y = n_spp, fill = treatment)) +
+  facet_wrap(~ site)
+```
+
+###### Fig. 3 Comparison of plant species richness between untreated plots, Houston (left) and NPK treated plots, North Pond (right). 2018 data
 
 Figures 1-3 depict the species richness distribution between plots at North Pond and Houston. These graphs show a couple of visual trends over the years. In recent summers, it appears that control plots at North Pond have been supporting more species, whereas control plots at Houston have had fewer. This may be caused by a multitude of reasons, such as fertilizer impacting the ability for native species to grow at NP or changes in prairie management such as controlled burnings. These results do not necessarily suggest that the overall health of the prairie has declined, however. These first three graphs do not take into consideration the native versus nonnative status. There is the possibility that the decrease in species richness at Houston has been the decline of invasive species, although further analyses is needed to determine this.  
 
@@ -209,9 +217,12 @@ Figure 4 shows the proportions of native and nonnative species that were present
 ###  
 **Discussion**
 
-Nutrient deposition and runoff often contaminate the surrounding area of application. A study completed on the effects of urbanization on species richness showed that under circumstances of urbanization, species richness almost always decreases (McKinney 2008). This, paired with our results that have shown a higher average species richness in control plots as compared to plots with NPK additives, could implicate that as urban growth and sprawl increase, we will see a decrease of native species richness as more land is maintained with chemical control including fertilizers, herbicides, and pesticides. There is also evidence that suggests that the use of NPK fertilizers could increase the amount of exotic species richness, thus decreasisng the number of native species richness in prairie landscapes (Seableem 2013).
+Nutrient deposition and runoff often contaminate the surrounding area of application. A study completed on the effects of urbanization on species richness showed that under circumstances of urbanization, species richness almost always decreases (McKinney 2008). There is also evidence that suggests that the use of NPK fertilizers could increase the amount of exotic species richness, thus decreasing the number of native species richness in prairie landscapes (Seabloom 2013). Our results did not show significance in native and nonnative species between both sites, but North Pond control plots do have higher species richness than plots with fertilizer. This may be due to the natural variability between sites, because Houston is warmer and drier than North Pond. 
 
-This result is often misinterpreted, as fertilizers have a tendency to increase biomass. This creates the illusion that there is a healthy environment because there is more plant matter, but an analysis of species richness will often times reveal that, as we have seen in our work at the MSUM RSC, chemicals decrease species richness. 
+This result could be misinterpreted, as this analysis did not include biomass and percent cover data. To get a better understanding of the current status of the two sites and how fertilizers impact native prairies, I would recommend further analyses that include and breakdown biomass and percent cover.
+
+  
+ 
 
 ###### ![](images/biomass.jpg) 
 
